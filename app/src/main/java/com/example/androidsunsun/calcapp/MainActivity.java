@@ -3,11 +3,13 @@ package com.example.androidsunsun.calcapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Button;
 import java.lang.*;
+
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -33,26 +35,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button4.setOnClickListener(this);
 
         mNumber1 = (EditText)findViewById(R.id.number1);
+        mNumber1.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
         mNumber2 = (EditText)findViewById(R.id.number2);
+        mNumber2.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
         mTextView = (TextView)findViewById(R.id.textView);
     }
     @Override
     public void onClick(View v){
+
         num1 = Double.parseDouble(this.mNumber1.getText().toString());
         num2 = Double.parseDouble(this.mNumber2.getText().toString());
 
-        this.result = 0.0;
-        if(v.getId()== R.id.button1){
-            result = num1 + num2 ;
-        }else if(v.getId()== R.id.button2){
-            result = num1 - num2;
-        }else if(v.getId()== R.id.button3){
-            result = num1 * num2;
-        }else if(v.getId()== R.id.button4){
-            result = num1 / num2;
-        }
-        Intent intent = new Intent(this,MainActivity2.class);
-        intent.putExtra("VALUE1",result);
-        startActivity(intent);
+            this.result = 0.0;
+            if (v.getId() == R.id.button1) {
+                result = num1 + num2;
+            } else if (v.getId() == R.id.button2) {
+                result = num1 - num2;
+            } else if (v.getId() == R.id.button3) {
+                result = num1 * num2;
+            } else if (v.getId() == R.id.button4) {
+                result = num1 / num2;
+            }
+            Intent intent = new Intent(this, MainActivity2.class);
+            intent.putExtra("VALUE1", result);
+            startActivity(intent);
     }
+
 }
